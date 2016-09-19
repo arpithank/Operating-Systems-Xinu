@@ -4,7 +4,7 @@
 
 #include <xinu.h>
 #include <string.h>
-#include <platform.h>
+
 extern	void	start(void);	/* Start of Xinu code			*/
 extern	void	*_end;		/* End of Xinu code			*/
 
@@ -25,7 +25,7 @@ struct	memblk	memlist;	/* List of free memory blocks		*/
 
 int	prcount;		/* Total number of live processes	*/
 pid32	currpid;		/* ID of currently executing process	*/
-struct platform platform; 
+
 /*------------------------------------------------------------------------
  * nulluser - initialize the system and become the null process
  *
@@ -44,14 +44,15 @@ void	nulluser()
 {	
 	struct	memblk	*memptr;	/* Ptr to memory block		*/
 	uint32	free_mem;		/* Total amount of free memory	*/
-	volatile uint32 *wspr = (volatile uint32 *) 0x44E35048;
+  volatile uint32 *wspr = (volatile uint32 *) 0x44E35048;
 	volatile uint32 *wwps = (volatile uint32 *) 0x44E35034;
  
 	/* Initialize the system */
+
 	sysinit();
 
 	kprintf("\n\r%s\n\n\r", VERSION);
-
+	
 	kprintf("Disable AM335x watchdog timer 1: ");
 	*wspr = 0x0000AAAA;
 	while (*wwps&0x00000010); // Delay while the first write completes
@@ -59,7 +60,6 @@ void	nulluser()
 	while (*wwps&0x00000010); // Delay while the second write completes
 	kprintf("Complete\n\r");
 	
-
 	/* Output Xinu memory layout */
 	free_mem = 0;
 	for (memptr = memlist.mnext; memptr != NULL;
@@ -84,10 +84,6 @@ void	nulluser()
 	/* Enable interrupts */
 
 	enable();
-	#ifdef MMU
-	/* Initialize MMU(Paging) */
-	initializeMMU();
-	#endif /*MMU*/
 
 	/* Create a process to execute function main() */
 
@@ -122,7 +118,7 @@ static	void	sysinit()
 
 	/* Initialize the interrupt vectors */
 
-	//initevec();
+	initevec();
 	
 	/* Initialize free memory list */
 	

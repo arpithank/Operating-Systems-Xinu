@@ -24,7 +24,21 @@ const	struct	cmdent	cmdtab[] = {
 	{"uptime",	FALSE,	xsh_uptime},
 	{"?",		FALSE,	xsh_help},
 	{"test_mmu", 	FALSE, 	xsh_mmu},
-	{"hello",       FALSE,  xsh_hello}
+	{"hello",       FALSE,  xsh_hello},
+
+
+#ifdef ARM_BBB
+  {"arp",		FALSE,	xsh_arp},
+  {"ipaddr",	FALSE,	xsh_ipaddr},
+	{"ping",	FALSE,	xsh_ping},
+	{"udp",		FALSE,	xsh_udpdump},
+	{"udpecho",	FALSE,	xsh_udpecho},
+	{"udpeserver",	FALSE,	xsh_udpeserver},
+#endif
+#ifdef MMU
+	{"test_mmu", 	FALSE, 	xsh_mmu},
+#endif
+  {"?",		FALSE,	xsh_help}
 
 };
 
