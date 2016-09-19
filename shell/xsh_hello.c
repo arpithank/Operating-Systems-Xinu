@@ -8,13 +8,13 @@
  * xsh_hello - print the string argument passed to it
  *------------------------------------------------------------------------
  */
-shellcmd xsh_hello(int32 nargs, char *args[]) {
+shellcmd xsh_hello(int32 nargs, char *args[])
+{
 
-int32 retval;
 char welcome_string[45] = "Welcome to the world of Xinu!!";
 
-if(nargs == 2) {
-
+if(nargs == 2) 
+{
 	//print the <string>, Welcome to the world of Xinu!!
 	
 	printf("Hello %s, %s\n",args[1],welcome_string);
