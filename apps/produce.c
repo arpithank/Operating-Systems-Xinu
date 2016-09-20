@@ -3,7 +3,8 @@
 #include <xinu.h>
 #include <prodcons.h>
 
-void producer(int count) {
+void producer(int count) 
+{
 
 	for(int ctr = 0; ctr <= count; ctr++)
 	{
