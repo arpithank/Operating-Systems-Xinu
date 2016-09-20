@@ -12,7 +12,13 @@ shellcmd xhs_prodcons(int narg, char* args[])
 
 	if(narg > 2)
 	{
-		fprintf("\n Too many arguments passed!");
+		fprintf(stderr,"\n Too many arguments passed!");
+		return 1;
+	}
+	
+	if(narg <2)
+	{
+		fprintf(stderr, "\n Too few arguments!");
 		return 1;
 	}
 
