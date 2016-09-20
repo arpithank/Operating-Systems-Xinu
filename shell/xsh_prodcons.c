@@ -3,7 +3,7 @@
 
 int global_var;
 
-shellcmd xhs_prodcons(int narg, char* args[])
+shellcmd xsh_prodcons(int32 narg, char* args[])
 {
 	int val = 2000;
 	
