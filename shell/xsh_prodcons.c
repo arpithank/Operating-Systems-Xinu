@@ -10,7 +10,7 @@ shellcmd xsh_prodcons(int32 narg, char* args[])
 	if(narg == 2 && args[1] != NULL)
 	{
 		val = atoi(args[1]);
-		printf("value is %d",val);
+		printf("\n value is %d",val);
 	}
 
 	if(narg > 2)
