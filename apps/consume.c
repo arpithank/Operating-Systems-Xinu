@@ -4,9 +4,9 @@
 void consumer(int count) 
 {
 	int ctr;
-	for(ctr = global_var; ctr <= count; ctr--)
+	for(ctr = 1; ctr <= global_var; ctr++)
 	{
-		printf("\n Consumed value = %d",ctr);
+		printf("\n Consumed value  %d\n",ctr);
 	}
 	
 }

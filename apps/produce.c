@@ -2,15 +2,15 @@
 
 #include <xinu.h>
 #include <prodcons.h>
-#include <stdio.h>
 
 void producer(int count) 
 {
 	int ctr;
-	for(ctr = 0; ctr <= count; ctr++)
+	
+	for(ctr = 1; ctr <= count; ctr++)
 	{
+		printf("\n Produced value %d\n",ctr);
 		global_var = ctr;
-		printf("\n value produced %d",global_var);
 	}
 }
 
