@@ -12,7 +12,10 @@ include Makedefs
 NODE=0
 GPORT=556${NODE}
 
-PLATFORM	=	arm-qemu
+ifndef PLATFORM
+$(error PLATFORM is not set in Makedefs or with 'make PLATFORM=arm-qemu')
+endif
+
 ifeq ($(PLATFORM),arm-qemu)
 	PLAT_CFLAGS =  -DARM_QEMU -mcpu=arm1176jz-s -ggdb3 
 	PLAT_LOADADDR = 0x00010000
@@ -171,6 +174,9 @@ clean:
 
 install: xinu
 	cp xinu.boot /tftpboot
+
+etags:
+	@(cd $(TOPDIR); find . -name '*.[ch]' -exec etags -a {} \;)
 
 qemu: xinu
 	qemu-system-arm -M versatilepb -m 512M -nographic -cpu arm1176  -kernel xinu.boot 
