@@ -1,0 +1,4 @@
+1.The program produces garbage values. This is because The processes, producer and consumer is asynchronous.
+2. All the produced values are getting consumed. Even for a small value like 10 or 20.
+
+The functions in the project are
