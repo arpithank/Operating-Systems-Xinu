@@ -5,11 +5,11 @@
 
 void producer(int count)
 {
-int ctr;
+	int ctr;
 
-for(ctr =1; ctr<= count;ctr++)
-{
-	printf("\n Value produced %d ",ctr);
-	n++;
-}
+	for(ctr =0; ctr< count;ctr++)
+	{
+		printf("\n Value produced %d ",ctr);
+		n++;
+	}
 }

@@ -5,10 +5,11 @@
 
 void consumer(int count)
 {
-int ctr;
-printf("\n Consumed Value %d ",n);
-for(ctr =1; ctr<= count; ctr++)
-{
-	printf("\n Consumed value %d ",ctr);
-}
+	int ctr;
+	
+	for(ctr =0; ctr<= count; ctr++)
+	{
+		printf("\n Consumed value %d ",n);
+	}
+	printf("\n");
 }
