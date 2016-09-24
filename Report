@@ -1,0 +1,12 @@
+1.The program produces garbage values. This is because The processes, producer and consumer is asynchronous. The global variable that they share can be overwrittten at any time.
+
+2. All the produced values are getting consumed. Even for a small value like 10 or 20.
+
+The functions in the project are-
+
+producer() - used to produce the values
+consumer() - used to consume the values
+xsh_prodcons() - to run the shell cmd to execute the prodcuer consumer program
+
+All functions and their prototypes, with header files were updated by both team members-
+ranagara and arpkashy
