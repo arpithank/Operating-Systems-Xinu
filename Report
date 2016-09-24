@@ -8,3 +8,5 @@ producer() - used to produce the values
 consumer() - used to consume the values
 xsh_prodcons() - to run the shell cmd to execute the prodcuer consumer program
 
+All functions and their prototypes, with header files were updated by both team members-
+ranagara and arpkashy
