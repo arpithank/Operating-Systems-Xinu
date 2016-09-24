@@ -11,5 +11,5 @@ void consumer(int count)
 	{
 		printf("\n Consumed value %d ",n);
 	}
-	printf("\n");
+	
 }

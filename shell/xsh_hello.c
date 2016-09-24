@@ -24,13 +24,13 @@ if(nargs == 2)
 
 if(nargs > 2)
 {
-	printf(stderr,"%s: too many arguments passed\n",args[0]);
+	printf("%s: too many arguments passed\n",args[0]);
 	return 1;
 }
 
 if(nargs <2)
 {
-	printf(stderr, "Too few arguments!\n");
+	printf("Too few arguments!\n");
 	return 1;
 }
 return 0;

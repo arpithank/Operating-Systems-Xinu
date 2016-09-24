@@ -12,4 +12,5 @@ void producer(int count)
 		printf("\n Value produced %d ",ctr);
 		n++;
 	}
+	printf("\n------------------------------------------");
 }
