@@ -1,12 +1,18 @@
-1.The program produces garbage values. This is because The processes, producer and consumer is asynchronous. The global variable that they share can be overwrittten at any time.
+1. Semaphores help both producer and consumer to share the resource in such a way that there are no conflicts. 
+The wait system call puts either produce or consume on wait while one of them is accesing the resource(shared memory). 
+The signal system call signals that the process on wait can now access the resource. 
+Thus the two processes are synchronized. 
 
-2. All the produced values are getting consumed. Even for small values like 10 or 20.
+2. Semaphores work with wait and signal system call. So when a process calls wait on the semaphore, the semaphones count is decremented. 
+Similarly when a process calls signal, the count is incremented. A process gets blocked when the semaphore count becomes negative. 
+The blocked process runs again when the other process calls signal to increment the count of the semaphore. Hence two semaphores are 
+required to keep a track on wait and signal of each of the two process(i.e increment/decrement in count value) to co-ordinate efficiently and thus achieve mutual execution.
 
-The functions in the project are-
 
-producer() - used to produce the values
-consumer() - used to consume the values
-xsh_prodcons() - to run the shell cmd to execute the prodcuer consumer program
+The functions used here are
+void producer(int count)
+void consumer(int count)
+shellcmd xsh_prodcons(int nargs, char *args[])
 
-All functions and their prototypes, with header files were updated by both team members-
+The code was discussed and executed by both
 ranagara and arpkashy
