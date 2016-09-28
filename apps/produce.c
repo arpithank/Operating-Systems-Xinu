@@ -7,10 +7,13 @@ void producer(int count)
 {
 	int ctr;
 
-	for(ctr =0; ctr< count;ctr++)
-	{
+	for(ctr =1; ctr<=count;ctr++)
+	{	
+		wait(consumed);
+		n=ctr;
 		printf("\n Value produced %d ",ctr);
-		n++;
+		signal(produced);
+		
 	}
-	printf("\n------------------------------------------");
+	printf("\n");
 }

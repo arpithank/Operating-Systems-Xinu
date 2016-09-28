@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 int n;
+sid32 produced, consumed;
 
 shellcmd xsh_prodcons(int32 narg, char* args[])
 {
@@ -27,6 +28,8 @@ shellcmd xsh_prodcons(int32 narg, char* args[])
                 count = atoi(args[1]);
                 printf("\ncount set to: %d",count);
         }
+	produced = semcreate(0);
+	consumed = semcreate(1);
 
 
 	resume(create(producer,1024,20,"producer",1,count));
