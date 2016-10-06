@@ -4,7 +4,7 @@
 syscall future_set(future *f, int *value)
 {
 //	f->value = *value;
-	if(f->state == FUTURE_EMPTY)
+	if(f->state == FUTURE_EMPTY || f->state == FUTURE_WAITING)
 	{
 		f->state = FUTURE_VALID;
 		*f->value = *value;
@@ -17,9 +17,9 @@ syscall future_set(future *f, int *value)
 		return SYSERR;
 	}
 
-	if(f->state == FUTURE_WAITING)
+	/*if(f->state == FUTURE_WAITING)
 	{
 		f->state = FUTURE_VALID;
 		return OK;
-	}
+	}*/
 }

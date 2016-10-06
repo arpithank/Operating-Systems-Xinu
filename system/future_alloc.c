@@ -10,7 +10,8 @@ future* future_alloc(int future_flag)
 	if(f_obj)
 	{
 	
-		printf("\n Block of memory assigned %d",&f_obj);
+		//printf("\n Block of memory assigned %d",&f_obj);
+		
 		/* do a getmem for the value that is part of struct */ 
 		f_obj->value = (int*)getmem(sizeof(int));
 		/* Assign flag value */
