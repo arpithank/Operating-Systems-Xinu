@@ -1,16 +1,21 @@
 /* Consumer values to consume*/
+#include <xinu.h>
 
-
-int future_cons(future *fut) 
+uint future_cons(future *fut) 
 {
 	  int i, status;
-	  status = future_get(fut, &i);
-	  if (status < 1) 
+	  for(i =0;i<10;i++)
 	  {
-		printf("future_get failed\n");
-		return -1;
+	  	status = future_get(fut, &i);
+	  	if (status < 1) 
+	  	{
+			printf("future_get failed\n");
+			return -1;
+	  	}
+	  	else
+	  	{
+	  		printf("it produced %d\n", i);
+	  	}
 	  }
-	  
-	  printf("it produced %d\n", i);
-	  return OK;
+	return OK;
 }
