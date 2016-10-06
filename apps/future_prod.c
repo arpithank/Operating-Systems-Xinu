@@ -5,8 +5,8 @@
 uint future_prod(future *fut) 
 {
 	int i, j;
-	//j = (int)fut;
-	printf("j = %d",j);
+	j = (int)fut;
+	//printf("j = %d",j);
 	for (i=0; i<10; i++) 
 	{
 		j+=i;
