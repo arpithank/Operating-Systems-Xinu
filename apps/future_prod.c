@@ -13,7 +13,6 @@ uint future_prod(future *fut)
 		printf("\n Value produced %d",j);
 		printf("\n Calling set \n");
 		future_set(fut, &j);
-
 	}
 		//calling set with the produced value
 		//printf("\n Calling set \n");
