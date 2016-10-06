@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <future.h>
+#include <xinu.h>
 
 syscall future_free(future* f)
 {
@@ -7,5 +6,5 @@ syscall future_free(future* f)
 	if(freemem(f,sizeof(f)) == OK )
 		return OK;
 	else
-		retun SYSERR;
+		return SYSERR;
 }
