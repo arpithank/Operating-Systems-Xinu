@@ -1,18 +1,12 @@
-1. Semaphores help both producer and consumer to share the resource in such a way that there are no conflicts. 
-The wait system call puts either produce or consume on wait while one of them is accesing the resource(shared memory). 
-The signal system call signals that the process on wait can now access the resource. 
-Thus the two processes are synchronized. 
 
-2. Semaphores work with wait and signal system call. So when a process calls wait on the semaphore, the semaphones count is decremented. 
-Similarly when a process calls signal, the count is incremented. A process gets blocked when the semaphore count becomes negative. 
-The blocked process runs again when the other process calls signal to increment the count of the semaphore. Hence two semaphores are 
-required to keep a track on wait and signal of each of the two process(i.e increment/decrement in count value) to co-ordinate efficiently and thus achieve mutual execution.
-
-
-The functions used here are
-void producer(int count)
-void consumer(int count)
-shellcmd xsh_prodcons(int nargs, char *args[])
 
 The code was discussed and executed by both
 ranagara and arpkashy
+
+Specifically ranagara worked on
+ system/future_alloc.c, system/future_free.c, system/future_get.c, system/future_set.c
+ 
+ arpkashy worked on
+ shell/xsh_prodcons.c, apps/future_prod.c, apps/future_cons.c
+ 
+ 
