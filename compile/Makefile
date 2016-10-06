@@ -11,7 +11,7 @@ include Makedefs
 
 NODE=0
 GPORT=556${NODE}
-
+PLATFORM = arm-qemu
 ifndef PLATFORM
 $(error PLATFORM is not set. Edit your Makedefs file and add 'PLATFORM=arm-qemu'or 'PLATFORM=arm-bbb')
 endif
