@@ -1,4 +1,4 @@
-fndef _FUTURE_H_
+#ifndef _FUTURE_H_
 #define _FUTURE_H_
  
 /* define states */
@@ -22,5 +22,6 @@ future* future_alloc(int future_flags);
 syscall future_free(future*);
 syscall future_get(future*, int*);
 syscall future_set(future*, int*);
- 
+uint future_prod(future* f);
+uint future_cons(future* f);
 #endif /* _FUTURE_H_ */
