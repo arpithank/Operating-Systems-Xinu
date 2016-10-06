@@ -14,7 +14,7 @@ uint future_cons(future *fut)
 	  	}
 	  	else
 	  	{
-	  		printf("it produced %d\n", i);
+	  		printf("it consumed %d\n", i);
 	  	}
 	  }
 	return OK;
