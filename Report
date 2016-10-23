@@ -1,0 +1,12 @@
+
+
+The code was discussed and executed by both
+ranagara and arpkashy
+
+Specifically ranagara worked on
+ system/future_alloc.c, system/future_free.c, system/future_get.c, system/future_set.c
+ 
+ arpkashy worked on
+ shell/xsh_prodcons.c, apps/future_prod.c, apps/future_cons.c
+ 
+ 
