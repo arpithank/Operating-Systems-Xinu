@@ -17,7 +17,14 @@ future* future_alloc(int future_flag)
 		/* Assign flag value */
 		f_obj->flag = future_flag;
 		f_obj->state = FUTURE_EMPTY;
-		
+
+		if(future_flag == FUTURE_SHARED)
+			init_queue(&f_obj->get_queue);
+		else if(future_flag == FUTURE_QUEUE)
+		{
+			init_queue(&f_obj->get_queue);
+			init_queue(&f_obj->set_queue );
+		}
 		return f_obj;
 	}
 	return NULL;
