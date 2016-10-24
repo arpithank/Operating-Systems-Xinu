@@ -23,15 +23,15 @@ syscall future_set(future *f, int *value)
 	
 	if(f->state == FUTURE_EMPTY)
 	{
-		f->state = FUTURE_VALID;
 		*(f->value) = *value;
+		f->state = FUTURE_VALID;
 		//resume(f->pid);
 		return OK;
 	}
 	
 	if(f->state == FUTURE_WAITING)
 	{
-		printf("\n Resuming process %d ",f->pid);
+		//printf("\n Resuming process %d ",f->pid);
 		*(f->value) = *value;
 		f->state = FUTURE_VALID;
 		
@@ -41,6 +41,7 @@ syscall future_set(future *f, int *value)
 			while(currpid != SYSERR)
 			{
 				resume(currpid);
+				currpid = de_queue(&f->get_queue);
 			}
 		}
 		
@@ -53,6 +54,7 @@ syscall future_set(future *f, int *value)
 		{
 			resume(f->pid);
 		}
+		return OK;
 	}
 	else
 	{

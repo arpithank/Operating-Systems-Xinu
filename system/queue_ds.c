@@ -31,7 +31,7 @@ int de_queue(queue* Q)
 	int item;
 	if(Q->count< 0)
 	{
-		printf("No items to dequeue");
+		printf("\n -All items dequeued-");
 		return SYSERR;
 	}
 	

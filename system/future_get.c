@@ -10,16 +10,15 @@ syscall future_get(future* f,int* value)
 	{
 		if(f->state == FUTURE_VALID)
 		{
-			*value = *f->value;
+			*value = *(f->value);
 			f->state = FUTURE_EMPTY;
 			return OK;
 		}
 
 		if(f->state == FUTURE_EMPTY)
 		{
-			printf("Suspending process %d ",getpid());
+			//printf("\n Suspending process %d ",getpid());
 			f->state = FUTURE_WAITING;
-			*value = *f->value;
 			f->pid = getpid();
 			suspend(getpid());
 			*value = *(f->value);
@@ -27,25 +26,23 @@ syscall future_get(future* f,int* value)
 			return OK;
 		}
 
-		if(f->state == FUTURE_WAITING)
-		{
-			f->state = FUTURE_EMPTY;
-			return SYSERR;
-		}
+		else
+		{ return SYSERR;}
+
 	}
 	
 	else if(f->flag == FUTURE_SHARED)
 	{
 		if(f->state == FUTURE_VALID)
                 {
-                        *value = *f->value;
+                        *value = *(f->value);
                         f->state = FUTURE_EMPTY;
                         return OK;
                 }
 		
-		if(f->state == FUTURE_EMPTY)
+		if(f->state == FUTURE_EMPTY || f->state == FUTURE_WAITING)
                 {
-			printf("Suspending process %d ",getpid());
+			//printf("\n Suspending process %d ",getpid());
 			f->state = FUTURE_WAITING;
 			currpid = getpid();
 			
@@ -67,12 +64,14 @@ syscall future_get(future* f,int* value)
 		{
 			//Remove the pid from the queue
 			currpid = de_queue(&f->set_queue);
+			//printf("\n Resuming process %d",currpid);
 			resume(currpid);
 			*value = *(f->value);
 		}
 		else
 		{
 			en_queue(&f->get_queue,getpid());
+			//printf("\n Suspending  process %d",getpid());
 			suspend(getpid());
 			*value = *(f->value);
 		}

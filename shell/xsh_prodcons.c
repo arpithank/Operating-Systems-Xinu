@@ -72,8 +72,8 @@ shellcmd xsh_prodcons(int32 narg, char* args[])
                         printf("\nCount set to: %d",count);
                         //produced = semcreate(0);
                         //consumed = semcreate(1);
-                        resume( create(produced, 1024, 20, "producer", 1, count) );
-                        resume( create(consumed, 1024, 20, "consumer", 1, count) );
+                        resume( create(producer, 1024, 20, "producer", 1, count) );
+                        resume( create(consumer, 1024, 20, "consumer", 1, count) );
 
                         return 0;
                 }
