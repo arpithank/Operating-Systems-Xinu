@@ -5,19 +5,12 @@
 
 uint future_prod(future *fut) 
 {
-	int i;
-	i=5;
+	int i=0;
 	
-	//printf("j = %d",j);
-//	for (i=0; i<10; i++) 
-//	{
+	i = rand();
+	future_set(fut, &i);
+	printf("\n Value produced %d\n",i);
 		
-		printf("\n Value produced %d\n",i);
-		//printf("\n Calling set \n");
-		future_set(fut, &i);
-		i=i+5;
-//	}
-		
-		return OK;
+	return OK;
 }
 
