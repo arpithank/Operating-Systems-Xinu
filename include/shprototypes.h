@@ -75,3 +75,6 @@ extern	shellcmd  xsh_help	(int32, char *[]);
 
 /* in file xsh_mmu.c */
 extern  shellcmd xsh_mmu	(int32, char *[]);
+
+/*in file xsh_fstest.c*/
+extern shellcmd xsh_fstest      (int32, char*[]);

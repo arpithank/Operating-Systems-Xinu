@@ -1,3 +1,5 @@
+#include <xinu.h>
+
 #ifndef FS_H
 #define FS_H
 
@@ -23,7 +25,7 @@
 
 struct inode {
   int id;
-  short int flags;
+  short int type;
   short int nlink;
   int device;
   int size;
@@ -36,6 +38,7 @@ struct inode {
 struct filetable {
   int state;
   int fileptr;
+  int flags;
   struct dirent *de;
   struct inode in;
 };
@@ -75,8 +78,8 @@ int fs_mount(int dev);
 /* filesystem internal functions */
 int fs_get_inode_by_num(int dev, int inode_number, struct inode *in);
 int fs_put_inode_by_num(int dev, int inode_number, struct inode *in);
-int fs_fs_setmaskbit(int b);
-int fs_fs_clearmaskbit(int b);
+int fs_setmaskbit(int b);
+int fs_clearmaskbit(int b);
 int fs_getmaskbit(int b);
 
 /*
