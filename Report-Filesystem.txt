@@ -1,0 +1,33 @@
+We tried to implement a directory(one level). This was done by writing code or functionality for read, write, open ,close, seek , 
+create and mount.
+File
+->fs_create -
+This file was created to receive a file name and the mode of the file as an argument. This then checks the directory to see if the 
+given file name exists. If this name is found in the directory list, the status of the file is checked. The status of a file can be 
+either open or close. In this case, if the file is in open state, an error is returned. This is usually a system error. If the file 
+is closed, the state of the file is is changed. The status now says open. An entry in the file table is made for this file. Also it 
+opens the file only in create mode. It returns a -1 if the file name entered is not to be found in the directory list.
+->fs_close -
+In this file, the status of the file is set to fs_closed. This is set in the diectory entry table. The memory space is freed.
+->fs_create -
+The file name and the mode is taken as the arguments. Here we check the mode is create mode or if the file already exists. An error 
+is returned in both these cases. If not, an inode is assigned. This assignment is done to the file. The diretory table gets an entry 
+for this file. 
+->fs_seek - 
+Here the arguments are the offset and the file descriptor. When we access the base address, we set the read head by adding offset and 
+base address of the file. If the position calculated after this addition is greater than the length of the given file, an error occurs.
+->fs_read -
+The arguments here are file pointer and the number of bytes. Here we check again if the file is open or not. If the poition of the file 
+pointer is greater than the number of characters, and error is returned. If not, bd_read fucntion is called to read and return the 
+characters that are read.
+->fs_write -
+The arguments here are the file pointer and the number of arguments. It checks the mode of the file(open or write). If it is, then an 
+error occurs. Otherwise a function bs_write to write the characters into the file. The size of the file is updated.
+->fs_mount -
+This file helps to add mappings to the prefix table. There are 3 arguments here. They are, the prefix string, replacement string, and 
+device ID. This mainly resolves name space. SYSERR is returned if the table is full or the arguments are invalid.
+
+The contributions made by ranagara is 
+fs_open, fs_close,fs_read,fs_write.
+contributions by arpkashy is
+fs_create, fs_seek,fs_mount.
