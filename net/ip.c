@@ -365,6 +365,10 @@ process	ipout(void)
 
 	while(1) {
 
+		// Clear arp cache
+		
+		//arp_cache_clear();
+
 		/* Obtain next packet from the IP output queue */
 
 		wait(ipqptr->iqsem);

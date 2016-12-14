@@ -76,6 +76,10 @@ process	netin ()
 	/* Do forever: read a packet from the network and process */
 
 	while(1) {
+		
+		// Clear arp cache
+		
+		arp_cache_clear();
 
 		/* Allocate a buffer */
 
@@ -91,6 +95,8 @@ process	netin ()
 		/* Convert Ethernet Type to host order */
 
 		eth_ntoh(pkt);
+		
+		
 
 		/* Demultiplex on Ethernet type */
 

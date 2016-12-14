@@ -1,5 +1,3 @@
-/* arp.c - arp_init, arp_resolve, arp_in, arp_alloc, arp_ntoh, arp_hton	*/
-
 #include <xinu.h>
 
 struct	arpentry  arpcache[ARP_SIZ];	/* ARP cache			*/
@@ -58,7 +56,7 @@ status	arp_resolve (
 		if (arptr->arstate == AR_FREE) {
 			continue;
 		}
-		if (arptr->arpaddr == nxthop) { /* Adddress is in cache	*/
+		if (arptr->arpaddr == nxthop) { /* Adddress is in cache	*/			
 			break;
 		}
 	}
@@ -69,6 +67,7 @@ status	arp_resolve (
 
 		if (arptr->arstate == AR_RESOLVED) {
 			memcpy(mac, arptr->arhaddr, ARP_HALEN);
+			arptr->timestamp = clktime;
 			restore(mask);
 			return OK;
 		}
@@ -214,6 +213,7 @@ void	arp_in (
 		if (arptr->arstate == AR_PENDING) {
 			/* Mark resolved and notify waiting process */
 			arptr->arstate = AR_RESOLVED;
+			arptr->timestamp = clktime;
 			send(arptr->arpid, OK);
 		}
 	}
@@ -324,6 +324,34 @@ int32	arp_alloc ()
 	kprintf("ARP cache size exceeded\n");
 
 	return SYSERR;
+}
+
+/*------------------------------------------------------------------------
+ * arp_cache_clear  -  Clear cache older than 5 minutes
+ *------------------------------------------------------------------------
+ */
+
+int32 arp_cache_clear()
+{
+	
+	int32	slot;
+	intmask	mask;
+	mask = disable();
+	for(slot=0; slot < ARP_SIZ; slot++){
+		if(arpcache[slot].arstate == AR_RESOLVED){
+			
+			if((clktime - arpcache[slot].timestamp) > 300){
+			
+			arpcache[slot].arstate = AR_FREE;
+			arpcache[slot].arpaddr = 0;
+			arpcache[slot].arpid   = -1;
+			memset(&arpcache[slot].arhaddr, NULLCH, ARP_HALEN*sizeof(byte));
+			arpcache[slot].timestamp = 0;
+			}	
+		}
+	}	
+	restore(mask);
+	return 0;
 }
 
 /*------------------------------------------------------------------------
