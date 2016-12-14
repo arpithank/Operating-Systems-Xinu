@@ -19,7 +19,7 @@ int fcons_udp_print(future *fut)
 		if(i==-1)
 			break;
 
-	  	kprintf("\n Data consumed %d", i);
+	  	kprintf("\nData consumed %d", i);
 	}	
 	if(!future_free(fut));
 		return -1;

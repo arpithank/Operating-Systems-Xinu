@@ -1,4 +1,4 @@
-/* xsh_udp_request.c  -- xsh_upd_request.c*/
+/* xsh_udp_request.c  -- xsh_udp_request.c*/
 
 #include "prodcons.h"
 #include "future.h"
@@ -111,7 +111,7 @@ shellcmd xsh_udp_request(int nargs, char *args[])
 				return -1;
 			}
 
-			printf("Length of %s is  %s \n",message,buffer);
+			//printf("Length of %s is  %s \n",message,buffer);
 			memset(buffer,'\0',sizeof(buffer));
 			memset(message,'\0',sizeof(message));
 		}
@@ -157,7 +157,7 @@ shellcmd xsh_udp_request(int nargs, char *args[])
 					return -1;
 				}
 				value = atoi(buffer);
-				printf("\nProducer produced %d",value);
+				printf("\nData produced %d",value);
 				status = future_set(f_exlusive, &value);
   				if (status < 1)
   				{
