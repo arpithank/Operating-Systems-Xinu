@@ -10,7 +10,7 @@ int future_prod(future *fut)
   {
     j += i;
   }
-  kprintf("\nProducer produced %d",j);
+  kprintf("\nData produced %d",j);
   status=future_set(fut, &j);
   if (status < 1)
   {

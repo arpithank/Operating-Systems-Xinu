@@ -11,7 +11,7 @@ int future_cons(future *fut)
     printf("future_get failed\n");
     return -1;
   }
-  kprintf("\nConsumer consumed %d", i);
+  kprintf("\nData consumed %d", i);
 
   return OK;
 }
